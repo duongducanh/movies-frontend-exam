@@ -2,7 +2,7 @@ import { useState } from 'react';
 import useFetchMovies from '../../hooks/useFetchMovies';
 import MovieCard from '../../components/MovieCard';
 import Tabs from '../../components/Tabs';
-import SearchBar from '../../components/SearchBar';
+import SkeletonCard from '../../components/SkeletonCard';
 import './HomePage.scss';
 
 const TABS = [
@@ -18,20 +18,28 @@ const HomePage = () => {
 
   const title = TABS.find((tab) => tab.key === activeTab)?.label || 'Movies';
 
+  const renderSkeleton = () => {
+    return (
+      <div className="movie-list">
+        {Array.from({ length: 10 }).map((_, index) => (
+          <SkeletonCard key={index} />
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div className="home-page">
-      <SearchBar />
       <Tabs options={TABS} activeTab={activeTab} onTabChange={setActiveTab} />
       <h1 className="home-page__title">{title}</h1>
 
-      {loading && <div>Loading...</div>}
-      {error && <div>Error: {error}</div>}
+      {loading && movies.length === 0 && renderSkeleton()}
 
       {!loading && !error && movies.length === 0 && (
         <div className="home-page__no-results">No movies found.</div>
       )}
 
-      {!loading && !error && movies.length > 0 && (
+      {movies.length > 0 && (
         <div className="movie-list">
           {movies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
@@ -41,5 +49,4 @@ const HomePage = () => {
     </div>
   );
 };
-
 export default HomePage;

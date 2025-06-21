@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom';
 import { Movie } from '../../types';
 import placeholder from '../../assets/images/placeholder.svg';
+import Loader from '../Loader';
 import './SearchResults.scss';
 
 interface SearchResultsProps {
   query: string;
   movies: Movie[];
   loading: boolean;
-  error: string | null;
 }
 
 const SearchResultItem = ({ movie }: { movie: Movie }) => {
@@ -15,11 +16,12 @@ const SearchResultItem = ({ movie }: { movie: Movie }) => {
     : placeholder;
 
   return (
-    <div className="search-result-item">
+    <Link to={`/movie/${movie.id}`} className="search-result-item">
       <img
         src={posterUrl}
         alt={movie.title}
         className="search-result-item__poster"
+        loading="lazy"
       />
       <div className="search-result-item__info">
         <h4 className="search-result-item__title">{movie.title}</h4>
@@ -27,21 +29,14 @@ const SearchResultItem = ({ movie }: { movie: Movie }) => {
           {movie.release_date?.substring(0, 4)}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 
-const SearchResults = ({
-  query,
-  movies,
-  loading,
-  error,
-}: SearchResultsProps) => {
+const SearchResults = ({ query, movies, loading }: SearchResultsProps) => {
   let content;
 
-  if (error) {
-    content = <div className="search-results__message">Error: {error}</div>;
-  } else if (movies.length > 0) {
+  if (movies.length > 0) {
     content = (
       <div
         className={`search-results__list ${
@@ -54,7 +49,7 @@ const SearchResults = ({
       </div>
     );
   } else if (loading) {
-    content = <div className="search-results__message">Searching...</div>;
+    content = <Loader />;
   } else {
     content = (
       <div className="search-results__message">

@@ -1,0 +1,34 @@
+.main-header {
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1001; // Higher than search results
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+  }
+
+  &__search {
+    flex-grow: 1;
+    max-width: 500px;
+
+    // Override SearchBar margin
+    .search-bar {
+      margin-bottom: 0;
+      padding: 0.5rem 0;
+    }
+  }
+}

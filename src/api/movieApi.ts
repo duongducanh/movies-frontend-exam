@@ -7,5 +7,4 @@ const axiosInstance = axios.create({
     Authorization: `Bearer ${API_ACCESS_TOKEN}`,
   },
 });
-
 export default axiosInstance;

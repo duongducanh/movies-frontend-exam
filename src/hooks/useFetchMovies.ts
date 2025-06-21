@@ -1,6 +1,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import movieApi from '../api/movieApi';
 import { Movie } from '../types';
+import { useToast } from '../contexts/ToastContext';
+import { getErrorMessage } from '../utils/errorUtils';
 
 interface FetchMoviesResponse {
   results: Movie[];
@@ -13,6 +15,7 @@ const useFetchMovies = (
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { addToast } = useToast();
 
   const paramsString = useMemo(() => JSON.stringify(params), [params]);
 
@@ -35,16 +38,17 @@ const useFetchMovies = (
         setError(null);
       } catch (err) {
         console.error('API Error:', err);
-        setError('Failed to fetch movies.');
+        const errorMessage = getErrorMessage(err);
+        setError(errorMessage);
+        addToast(errorMessage, 'error');
       } finally {
         setLoading(false);
       }
     };
 
     fetchMovies();
-  }, [endpoint, paramsString]);
+  }, [endpoint, paramsString, addToast]);
 
   return { movies, loading, error };
 };
-
 export default useFetchMovies;

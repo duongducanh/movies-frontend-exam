@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { Movie } from '../../types';
 import placeholder from '../../assets/images/placeholder.svg';
 import './MovieCard.scss';
@@ -13,10 +13,15 @@ const MovieCard = ({ movie }: MovieCardProps) => {
     : placeholder;
 
   return (
-    <div className="movie-card">
-      <img src={posterUrl} alt={movie.title} className="movie-card__poster" />
+    <Link to={`/movie/${movie.id}`} className="movie-card">
+      <img
+        src={posterUrl}
+        alt={movie.title}
+        className="movie-card__poster"
+        loading="lazy"
+      />
       <h3 className="movie-card__title">{movie.title}</h3>
-    </div>
+    </Link>
   );
 };
 

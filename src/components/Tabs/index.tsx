@@ -26,5 +26,4 @@ const Tabs = ({ options, activeTab, onTabChange }: TabsProps) => {
     </div>
   );
 };
-
 export default Tabs;

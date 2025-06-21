@@ -1,0 +1,104 @@
+@import '../../styles/variables';
+
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+}
+
+.toast {
+  min-width: 300px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: toast-slide-in 0.3s ease-out forwards;
+  position: relative;
+
+  &--error {
+    background-color: #dc3545; // Bootstrap red
+    border-left: 4px solid #b02a33;
+  }
+
+  &--success {
+    background-color: #28a745; // Bootstrap green
+    border-left: 4px solid #1e7e34;
+  }
+
+  &--info {
+    background-color: #17a2b8; // Bootstrap info blue
+    border-left: 4px solid #117a8b;
+  }
+
+  &__message {
+    margin: 0;
+    flex-grow: 1;
+    line-height: 1.4;
+    font-size: 14px;
+    padding-right: 12px;
+    word-wrap: break-word;
+  }
+
+  &__close-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.8;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      opacity: 1;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+    }
+
+    &:focus {
+      outline: 2px solid rgba(255, 255, 255, 0.5);
+      outline-offset: 2px;
+    }
+  }
+}
+
+@keyframes toast-slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+// Optional: Add exit animation when removing toast
+.toast--exiting {
+  animation: toast-slide-out 0.3s ease-in forwards;
+}
+
+@keyframes toast-slide-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}

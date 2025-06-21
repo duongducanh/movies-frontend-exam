@@ -10,7 +10,7 @@ const SearchBar = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Fetch movies based on the debounced query
-  const { movies, loading, error } = useFetchMovies('/search/movie', {
+  const { movies, loading } = useFetchMovies('/search/movie', {
     query: debouncedQuery,
   });
 
@@ -83,7 +83,6 @@ const SearchBar = () => {
             query={debouncedQuery}
             movies={movies}
             loading={loading}
-            error={error}
           />
         )}
       </div>

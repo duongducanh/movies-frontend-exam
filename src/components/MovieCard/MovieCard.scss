@@ -6,14 +6,19 @@
   width: 200px;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  text-decoration: none;
+  color: inherit;
 
   &:hover {
     transform: scale(1.05);
   }
 
   &__poster {
+    display: block;
     width: 100%;
     height: auto;
+    aspect-ratio: 2 / 3;
+    background-color: #f0f0f0;
   }
 
   &__title {

@@ -21,6 +21,8 @@
   padding: 0.5rem 1rem;
   cursor: pointer;
   border-bottom: 1px solid #eee;
+  text-decoration: none;
+  color: inherit;
 
   &:last-child {
     border-bottom: none;
@@ -32,11 +34,13 @@
 
   &__poster {
     width: 40px;
-    height: 60px;
+    height: auto;
+    aspect-ratio: 2 / 3;
     object-fit: cover;
     margin-right: 1rem;
     border-radius: 4px;
     flex-shrink: 0;
+    background-color: #f0f0f0;
   }
 
   &__info {
