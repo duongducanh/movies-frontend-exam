@@ -1,0 +1,20 @@
+.home-page {
+  padding: 1rem;
+
+  &__title {
+    text-align: center;
+  }
+
+  .movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__no-results {
+    text-align: center;
+    padding: 2rem;
+    color: #555;
+    font-size: 1.2rem;
+  }
+}
