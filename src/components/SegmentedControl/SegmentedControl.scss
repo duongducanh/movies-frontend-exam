@@ -1,0 +1,71 @@
+@import '../../styles/variables';
+
+.segmented-control {
+  display: inline-flex;
+  background-color: #f1f3f4;
+  border-radius: 8px;
+  padding: 4px;
+  gap: 2px;
+  border: 1px solid #e0e0e0;
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    font-weight: 500;
+    color: #5f6368;
+    min-width: 80px;
+    justify-content: center;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+      color: #202124;
+    }
+
+    &--active {
+      background-color: #fff;
+      color: #1a73e8;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        background-color: #fff;
+        color: #1a73e8;
+      }
+    }
+
+    &:focus {
+      outline: 2px solid #1a73e8;
+      outline-offset: 2px;
+    }
+  }
+
+  &__icon {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  &__label {
+    font-size: 14px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  // Responsive: Hide labels on smaller screens
+  @media (max-width: 480px) {
+    &__label {
+      display: none;
+    }
+
+    &__option {
+      min-width: 44px;
+      padding: 8px 12px;
+    }
+  }
+}

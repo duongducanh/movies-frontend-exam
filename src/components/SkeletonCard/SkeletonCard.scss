@@ -1,45 +1,180 @@
+@import '../../styles/variables';
+
 .skeleton-card {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   overflow: hidden;
-  margin: 1rem;
-  width: 200px;
   background-color: #f5f5f5;
 
-  &__poster {
-    width: 100%;
-    height: 300px; // Match MovieCard poster aspect ratio
-    background-color: #e0e0e0;
-    position: relative;
-    overflow: hidden;
+  // Grid view - existing layout with improvements
+  &--grid {
+    margin: 1rem;
+    width: 200px;
+
+    .skeleton-card__poster {
+      width: 100%;
+      height: 300px; // Match MovieCard poster aspect ratio
+      background-color: #e0e0e0;
+    }
+
+    .skeleton-card__info {
+      padding: 0.75rem 0.5rem;
+    }
+
+    .skeleton-card__title {
+      height: 20px;
+      width: 90%;
+      margin: 0 auto 0.5rem auto;
+      background-color: #e0e0e0;
+      border-radius: 4px;
+    }
+
+    .skeleton-card__year--grid {
+      height: 16px;
+      width: 40%;
+      margin: 0 auto;
+      background-color: #e0e0e0;
+      border-radius: 4px;
+    }
   }
 
-  &__title {
-    height: 24px;
-    width: 80%;
-    margin: 1rem auto;
-    background-color: #e0e0e0;
-    border-radius: 4px;
-    position: relative;
-    overflow: hidden;
+  // List view - horizontal layout
+  &--list {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+
+    .skeleton-card__poster--list {
+      width: 80px;
+      height: 120px;
+      flex-shrink: 0;
+      background-color: #e0e0e0;
+      border-radius: 6px;
+    }
+
+    .skeleton-card__info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .skeleton-card__title--list {
+      height: 24px;
+      width: 70%;
+      background-color: #e0e0e0;
+      border-radius: 4px;
+    }
+
+    .skeleton-card__meta {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .skeleton-card__year {
+      height: 16px;
+      width: 60px;
+      background-color: #e0e0e0;
+      border-radius: 4px;
+    }
+
+    .skeleton-card__rating {
+      height: 16px;
+      width: 80px;
+      background-color: #e0e0e0;
+      border-radius: 4px;
+    }
+
+    .skeleton-card__overview {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-top: 0.25rem;
+    }
+
+    .skeleton-card__overview-line {
+      height: 14px;
+      background-color: #e0e0e0;
+      border-radius: 4px;
+
+      &:nth-child(1) {
+        width: 100%;
+      }
+
+      &:nth-child(2) {
+        width: 85%;
+      }
+
+      &--short {
+        width: 60%;
+      }
+    }
   }
 
-  // Shimmer effect
-  &__poster::after,
-  &__title::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.5) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    animation: shimmer 1.5s infinite;
+  // Shimmer effect for all skeleton elements
+  &__poster,
+  &__title,
+  &__year,
+  &__rating,
+  &__overview-line {
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      animation: shimmer 1.5s infinite;
+    }
+  }
+
+  // Responsive adjustments for list view
+  @media (max-width: 768px) {
+    &--list {
+      padding: 0.75rem;
+      gap: 0.75rem;
+
+      .skeleton-card__poster--list {
+        width: 60px;
+        height: 90px;
+      }
+
+      .skeleton-card__title--list {
+        height: 20px;
+      }
+
+      .skeleton-card__overview-line {
+        height: 12px;
+
+        &:nth-child(3) {
+          display: none; // Hide third line on mobile
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    &--list {
+      .skeleton-card__meta {
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .skeleton-card__year,
+      .skeleton-card__rating {
+        width: 50px;
+      }
+    }
   }
 }
 
