@@ -1,5 +1,7 @@
 # 🎬 Elotus Frontend Exam - Movie Explorer App
 
+Demo: https://elotus-frontend-demo-lucci.web.app/
+
 A modern React TypeScript application for exploring and searching movies using The Movie Database (TMDB) API (https://developers.themoviedb.org/3).
 
 ## ✨ Features
@@ -159,26 +161,12 @@ export const API_BASE_URL = 'https://api.themoviedb.org/3';
 
 **Note**: Currently API token is hardcoded in source code. For better security, consider using environment variables for production.
 
-## 🤝 Contributing
-
-1. Fork repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Create Pull Request
-
 ## 📝 Code Style
 
 - **TypeScript**: Strict mode enabled
 - **ESLint**: Airbnb config with custom rules
 - **Prettier**: Consistent code formatting
 - **Conventional Commits**: Commit message standards
-
-## 🐛 Known Issues
-
-- [ ] Image loading fallback needs optimization
-- [ ] Search debouncing can be improved
-- [ ] Loading states can be smoother
 
 ## 📚 Learning Resources
 
@@ -188,8 +176,4 @@ export const API_BASE_URL = 'https://api.themoviedb.org/3';
 
 ## 📄 License
 
-This project is for educational purposes as part of Elotus Frontend Examination.
-
----
-
-Made with ❤️ for Elotus Frontend Exam
+This project is for educational purposes as part of Frontend Examination.
