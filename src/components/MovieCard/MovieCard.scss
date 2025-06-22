@@ -1,16 +1,18 @@
+@import '../../styles/variables';
+
 .movie-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  margin: 1rem;
-  width: 200px;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+  transition: transform var(--transition-fast);
   text-decoration: none;
   color: inherit;
+  background-color: var(--bg-primary);
 
   &:hover {
     transform: scale(1.05);
+    box-shadow: var(--shadow-md);
   }
 
   &__poster {
@@ -18,25 +20,27 @@
     width: 100%;
     height: auto;
     aspect-ratio: 2 / 3;
-    background-color: #f0f0f0;
+    background-color: var(--bg-secondary);
   }
 
   &__info {
-    padding: 0.75rem 0.5rem;
+    padding: var(--spacing-sm) var(--spacing-sm);
   }
 
   &__title {
-    margin: 0 0 0.25rem 0;
-    font-size: 1rem;
+    margin: 0 0 var(--spacing-xs) 0;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
     text-align: center;
-    line-height: 1.3;
+    line-height: var(--line-height-tight);
+    color: var(--text-primary);
   }
 
   &__year {
     margin: 0;
-    font-size: 0.875rem;
-    color: #666;
+    font-size: var(--font-size-sm);
+    color: var(--text-tertiary);
     text-align: center;
-    font-weight: normal;
+    font-weight: var(--font-weight-normal);
   }
 }

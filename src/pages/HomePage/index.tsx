@@ -67,30 +67,33 @@ const HomePage = () => {
   };
 
   return (
-    <div className="home-page">
-      <div className="home-page__header">
-        <Tabs
-          options={TABS}
-          activeTab={activeTab}
-          onTabChange={handleTabChange}
-        />
-        <SegmentedControl
-          options={VIEW_OPTIONS}
-          value={viewMode}
-          onChange={handleViewModeChange}
-        />
+    <main className="home-page">
+      <div className="container">
+        <div className="home-page__header">
+          <Tabs
+            options={TABS}
+            activeTab={activeTab}
+            onTabChange={handleTabChange}
+          />
+        </div>
+
+        <h1 className="home-page__title">{title}</h1>
+        <div className="home-page__view-options">
+          <SegmentedControl
+            options={VIEW_OPTIONS}
+            value={viewMode}
+            onChange={handleViewModeChange}
+          />
+        </div>
+        {loading && movies.length === 0 && renderSkeleton()}
+
+        {!loading && movies.length === 0 && (
+          <div className="home-page__no-results">No movies found.</div>
+        )}
+
+        {movies.length > 0 && <MovieList movies={movies} viewMode={viewMode} />}
       </div>
-
-      <h1 className="home-page__title">{title}</h1>
-
-      {loading && movies.length === 0 && renderSkeleton()}
-
-      {!loading && movies.length === 0 && (
-        <div className="home-page__no-results">No movies found.</div>
-      )}
-
-      {movies.length > 0 && <MovieList movies={movies} viewMode={viewMode} />}
-    </div>
+    </main>
   );
 };
 export default HomePage;

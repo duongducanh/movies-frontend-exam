@@ -4,54 +4,54 @@
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: var(--z-toast);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--spacing-sm);
   max-width: 400px;
 }
 
 .toast {
   min-width: 300px;
-  padding: 16px 20px;
-  border-radius: 8px;
-  color: #fff;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  color: var(--white);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  animation: toast-slide-in 0.3s ease-out forwards;
+  box-shadow: var(--shadow-lg);
+  animation: toast-slide-in var(--transition-normal) ease-out forwards;
   position: relative;
 
   &--error {
-    background-color: #dc3545; // Bootstrap red
-    border-left: 4px solid #b02a33;
+    background-color: var(--color-error);
+    border-left: 4px solid var(--red-600);
   }
 
   &--success {
-    background-color: #28a745; // Bootstrap green
-    border-left: 4px solid #1e7e34;
+    background-color: var(--color-success);
+    border-left: 4px solid var(--green-600);
   }
 
   &--info {
-    background-color: #17a2b8; // Bootstrap info blue
-    border-left: 4px solid #117a8b;
+    background-color: var(--blue-500);
+    border-left: 4px solid var(--blue-600);
   }
 
   &__message {
     margin: 0;
     flex-grow: 1;
-    line-height: 1.4;
-    font-size: 14px;
-    padding-right: 12px;
+    line-height: var(--line-height-tight);
+    font-size: var(--font-size-sm);
+    padding-right: var(--spacing-sm);
     word-wrap: break-word;
   }
 
   &__close-button {
     background: none;
     border: none;
-    color: #fff;
-    font-size: 18px;
+    color: var(--white);
+    font-size: var(--font-size-lg);
     line-height: 1;
     cursor: pointer;
     padding: 0;
@@ -89,7 +89,7 @@
 
 // Optional: Add exit animation when removing toast
 .toast--exiting {
-  animation: toast-slide-out 0.3s ease-in forwards;
+  animation: toast-slide-out var(--transition-normal) ease-in forwards;
 }
 
 @keyframes toast-slide-out {

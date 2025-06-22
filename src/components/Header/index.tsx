@@ -5,12 +5,14 @@ import './Header.scss';
 const Header = () => {
   return (
     <header className="main-header">
-      <div className="main-header__content">
-        <Link to="/" className="main-header__logo">
-          Movies
-        </Link>
-        <div className="main-header__search">
-          <SearchBar />
+      <div className="container">
+        <div className="main-header__content">
+          <Link to="/" className="main-header__logo">
+            Movies
+          </Link>
+          <div className="main-header__search">
+            <SearchBar />
+          </div>
         </div>
       </div>
     </header>

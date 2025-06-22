@@ -13,23 +13,25 @@ const MovieDetailsPage = () => {
 
   if (loading) {
     return (
-      <div className="movie-details-page">
+      <main className="movie-details-page">
         <Loader fullscreen />
-      </div>
+      </main>
     );
   }
 
   if (!movie) {
     return (
-      <div className="movie-details-page">
-        <div className="movie-details-page__not-found">
-          <h2>Movie not found</h2>
-          <p>
-            The requested movie could not be loaded. Please try again or go back
-            to the home page.
-          </p>
+      <main className="movie-details-page">
+        <div className="container">
+          <div className="movie-details-page__not-found">
+            <h2>Movie not found</h2>
+            <p>
+              The requested movie could not be loaded. Please try again or go
+              back to the home page.
+            </p>
+          </div>
         </div>
-      </div>
+      </main>
     );
   }
 
@@ -47,36 +49,38 @@ const MovieDetailsPage = () => {
   };
 
   return (
-    <div className="movie-details-page">
+    <main className="movie-details-page">
       <div
         className="backdrop"
         style={{ backgroundImage: `url(${backdropUrl})` }}
       ></div>
-      <div className="content">
-        <div className="poster">
-          <img src={posterUrl} alt={movie.title} />
-        </div>
-        <div className="info">
-          <h1>{movie.title}</h1>
-          <div className="meta">
-            <span>{movie.release_date?.substring(0, 4)}</span>
-            <span>{formatRuntime(movie.runtime)}</span>
+      <div className="container">
+        <div className="content">
+          <div className="poster">
+            <img src={posterUrl} alt={movie.title} />
           </div>
-          <div className="genres">
-            {movie.genres.map((genre) => (
-              <span key={genre.id} className="genre-tag">
-                {genre.name}
-              </span>
-            ))}
+          <div className="info">
+            <h1>{movie.title}</h1>
+            <div className="meta">
+              <span>{movie.release_date?.substring(0, 4)}</span>
+              <span>{formatRuntime(movie.runtime)}</span>
+            </div>
+            <div className="genres">
+              {movie.genres.map((genre) => (
+                <span key={genre.id} className="genre-tag">
+                  {genre.name}
+                </span>
+              ))}
+            </div>
+            <div className="rating">
+              Rating: {movie.vote_average.toFixed(1)} / 10
+            </div>
+            <h2>Overview</h2>
+            <p>{movie.overview}</p>
           </div>
-          <div className="rating">
-            Rating: {movie.vote_average.toFixed(1)} / 10
-          </div>
-          <h2>Overview</h2>
-          <p>{movie.overview}</p>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 export default MovieDetailsPage;

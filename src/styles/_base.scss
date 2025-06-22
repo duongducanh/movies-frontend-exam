@@ -1,5 +1,252 @@
+@import './variables';
+
+// Global reset and base styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px; // Base font size for rem calculations
+}
+
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue',
+    Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Container class for consistent layout
+// Usage: <div className="container">Your content</div>
+// Max width: 1200px, centered with responsive padding
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 0 var(--spacing-md);
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0 var(--spacing-sm);
+  }
+}
+
+// Typography
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  line-height: var(--line-height-tight);
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+p {
+  margin: 0;
+  line-height: var(--line-height-normal);
+}
+
+// Links
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+// ========================================
+// 📝 FORM ELEMENTS GLOBAL STYLES
+// ========================================
+
+// Base styles for all form inputs
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-full);
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: all var(--transition-fast);
+  width: 100%;
+
+  // Placeholder styles
+  &::placeholder {
+    color: var(--text-tertiary);
+    opacity: 1;
+  }
+
+  // Focus state
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px var(--red-50);
+  }
+
+  // Hover state
+  &:hover:not(:disabled):not(:focus) {
+    border-color: var(--gray-300);
+  }
+
+  // Disabled state
+  &:disabled {
+    background-color: var(--bg-secondary);
+    color: var(--text-tertiary);
+    border-color: var(--border-default);
+    cursor: not-allowed;
+
+    &::placeholder {
+      color: var(--gray-400);
+    }
+  }
+}
+
+// Specific input type styles
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='search'],
+input[type='url'],
+input[type='tel'],
+input[type='number'] {
+  height: 44px; // Touch-friendly height
+}
+
+// Textarea specific styles
+textarea {
+  min-height: 100px;
+  resize: vertical;
+  line-height: var(--line-height-normal);
+}
+
+// Remove default button styles
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+// ========================================
+// 🎯 FORM UTILITY CLASSES
+// ========================================
+
+// Input size variants
+.input-sm {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  height: 36px;
+}
+
+.input-lg {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-lg);
+  height: 52px;
+}
+
+// Input style variants
+.input-rounded {
+  border-radius: var(--radius-full);
+}
+
+.input-square {
+  border-radius: 0;
+}
+
+// Form group spacing
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+}
+
+.form-help {
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
+
+.form-error {
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+}
+
+// ========================================
+// 🎯 FOCUS UTILITY CLASSES
+// ========================================
+
+// Completely disable focus (USE WITH CAUTION!)
+.no-focus {
+  &:focus,
+  &:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+// Subtle focus (minimal visual)
+.focus-subtle {
+  &:focus-visible {
+    outline: 1px solid var(--border-default) !important;
+    outline-offset: 1px !important;
+    box-shadow: none !important;
+  }
+}
+
+// Strong focus (high contrast)
+.focus-strong {
+  &:focus-visible {
+    outline: 3px solid var(--color-primary) !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 6px var(--blue-100) !important;
+  }
 }
