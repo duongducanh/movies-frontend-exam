@@ -56,16 +56,4 @@
     line-height: 1;
     white-space: nowrap;
   }
-
-  // Responsive: Hide labels on smaller screens
-  @media (max-width: $breakpoint-mobile) {
-    &__label {
-      display: none;
-    }
-
-    &__option {
-      min-width: 44px;
-      padding: var(--spacing-sm) var(--spacing-sm);
-    }
-  }
 }

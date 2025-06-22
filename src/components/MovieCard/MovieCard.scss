@@ -15,12 +15,34 @@
     box-shadow: var(--shadow-md);
   }
 
+  &__poster-container {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    background-color: var(--bg-secondary);
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgb(254 240 138 / 0);
+      transition: var(--transition-fast);
+      pointer-events: none;
+    }
+  }
+
   &__poster {
     display: block;
     width: 100%;
-    height: auto;
-    aspect-ratio: 2 / 3;
-    background-color: var(--bg-secondary);
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:hover &__poster-container::after {
+    background-color: rgb(254 240 138 / 0.3);
   }
 
   &__info {

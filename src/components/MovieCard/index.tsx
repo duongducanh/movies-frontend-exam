@@ -18,13 +18,15 @@ const MovieCard = ({ movie }: MovieCardProps) => {
     : '';
 
   return (
-    <Link to={`/movie/${movie.id}`} className="movie-card">
-      <img
-        src={posterUrl}
-        alt={movie.title}
-        className="movie-card__poster"
-        loading="lazy"
-      />
+    <Link to={`/movie/${movie.id}`} className="movie-card" tabIndex={0}>
+      <div className="movie-card__poster-container">
+        <img
+          src={posterUrl}
+          alt={movie.title}
+          className="movie-card__poster"
+          loading="lazy"
+        />
+      </div>
       <div className="movie-card__info">
         <h3 className="movie-card__title">{movie.title}</h3>
         {releaseYear && <p className="movie-card__year">{releaseYear}</p>}

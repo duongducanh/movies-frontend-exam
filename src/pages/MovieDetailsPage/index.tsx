@@ -75,7 +75,7 @@ const MovieDetailsPage = () => {
             <div className="rating">
               Rating: {movie.vote_average.toFixed(1)} / 10
             </div>
-            <h2>Overview</h2>
+            <h3>Overview</h3>
             <p>{movie.overview}</p>
           </div>
         </div>

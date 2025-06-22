@@ -85,6 +85,7 @@ const HomePage = () => {
             onChange={handleViewModeChange}
           />
         </div>
+
         {loading && movies.length === 0 && renderSkeleton()}
 
         {!loading && movies.length === 0 && (
