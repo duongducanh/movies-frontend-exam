@@ -1,46 +1,195 @@
-# Getting Started with Create React App
+# 🎬 Elotus Frontend Exam - Movie Explorer App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern React TypeScript application for exploring and searching movies using The Movie Database (TMDB) API (https://developers.themoviedb.org/3).
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+- 🎭 **Browse Movies**: View lists of now playing and top rated movies
+- 🔍 **Search Functionality**: Search movies by name
+- 📱 **Responsive Design**: Optimized for all devices
+- 🎯 **View Modes**: Switch between Grid and List view
+- 🎨 **Modern UI**: Beautiful interface with hover effects and animations
+- ♿ **Accessibility**: Keyboard navigation and screen reader support
+- 🎪 **Movie Details**: View detailed information for each movie
+- 🔗 **URL State Management**: State preserved in URL parameters
+- 🔔 **Toast Notifications**: Notification system with success, error, info states
 
-### `npm start`
+## 🛠️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Frontend**: React 19.1.0 + TypeScript
+- **Styling**: SCSS with CSS Variables
+- **Routing**: React Router DOM 7.6.2
+- **HTTP Client**: Axios 1.10.0
+- **Build Tool**: Create React App
+- **Code Quality**: ESLint + Prettier
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 📋 System Requirements
 
-### `npm test`
+- Node.js 16.x or higher
+- npm or yarn
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Installation and Setup
 
-### `npm run build`
+### 1. Clone repository
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/duongducanh/movies-frontend-exam.git
+cd movies-frontend-exam
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. Install dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+# Using npm
+npm install
 
-### `npm run eject`
+# Or using yarn
+yarn install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 3. Run the application
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+# Development mode
+npm start
+# or
+yarn start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The application will run at `http://localhost:3000`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 4. Build for production
 
-## Learn More
+```bash
+npm run build
+# or
+yarn build
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📁 Project Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+src/
+├── api/                 # API configuration and calls
+├── assets/             # Static assets (images, icons)
+├── components/         # Reusable components
+│   ├── Header/
+│   ├── MovieCard/
+│   ├── SearchBar/
+│   ├── MovieList/
+│   └── ...
+├── contexts/           # React contexts
+├── hooks/              # Custom hooks
+├── pages/              # Page components
+│   ├── HomePage/
+│   └── MovieDetailsPage/
+├── styles/             # Global styles and variables
+├── types/              # TypeScript type definitions
+└── utils/              # Utility functions
+```
+
+## 🎯 Key Features
+
+### Home Page
+
+- **Tabs Navigation**: Now Playing / Top Rated
+- **View Toggle**: Grid view / List view
+- **URL State**: State preserved in URL parameters
+- **Infinite Scroll**: Lazy loading on scroll
+
+### Movie Cards
+
+- **Hover Effects**: Yellow overlay on hover
+- **Keyboard Navigation**: Tab navigation support
+- **Responsive Images**: Auto-optimized sizing
+- **Skeleton Loading**: Beautiful loading states
+
+### Search
+
+- **Real-time Search**: Instant search functionality
+- **Search Results**: Display results with highlighting
+- **No Results State**: Good UX when no results found
+
+### Toast Notifications
+
+- **Multiple Types**: Success, Error, Info with distinct colors
+- **Auto Dismiss**: Automatically disappear after 5 seconds
+- **Manual Close**: Can be closed manually with X button
+- **Portal Rendering**: Render outside DOM tree, always on top layer
+- **Smooth Animations**: Smooth slide-in/slide-out effects
+- **Accessibility**: Focus management and keyboard navigation
+
+## 🎨 Styling Architecture
+
+- **SCSS Modules**: Component-scoped styles
+- **CSS Variables**: Consistent design tokens
+- **Responsive Design**: Mobile-first approach
+
+## ⚡ Performance
+
+- **Lazy Loading**: Images and components
+- **Code Splitting**: Route-based splitting
+- **Optimized Bundles**: Tree shaking and minification
+- **Caching**: HTTP caching for API calls
+
+## 🧪 Available Scripts
+
+```bash
+# Development
+npm start              # Run dev server
+npm run build          # Build production
+npm test               # Run tests
+
+# Code Quality
+npm run lint           # Check linting
+npm run lint:fix       # Auto fix linting issues
+npm run format         # Format code with Prettier
+```
+
+## 🔧 Configuration
+
+### API Configuration
+
+The project uses TMDB API with credentials configured directly in `src/constants/index.ts`:
+
+```typescript
+export const API_ACCESS_TOKEN = 'your_tmdb_access_token';
+export const API_BASE_URL = 'https://api.themoviedb.org/3';
+```
+
+**Note**: Currently API token is hardcoded in source code. For better security, consider using environment variables for production.
+
+## 🤝 Contributing
+
+1. Fork repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Create Pull Request
+
+## 📝 Code Style
+
+- **TypeScript**: Strict mode enabled
+- **ESLint**: Airbnb config with custom rules
+- **Prettier**: Consistent code formatting
+- **Conventional Commits**: Commit message standards
+
+## 🐛 Known Issues
+
+- [ ] Image loading fallback needs optimization
+- [ ] Search debouncing can be improved
+- [ ] Loading states can be smoother
+
+## 📚 Learning Resources
+
+- [React Documentation](https://react.dev/)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [TMDB API Documentation](https://developer.themoviedb.org/docs)
+
+## 📄 License
+
+This project is for educational purposes as part of Elotus Frontend Examination.
+
+---
+
+Made with ❤️ for Elotus Frontend Exam
