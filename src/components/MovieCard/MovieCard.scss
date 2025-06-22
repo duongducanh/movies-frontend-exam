@@ -1,6 +1,7 @@
 @import '../../styles/variables';
 
 .movie-card {
+  width: 100%;
   border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
   overflow: hidden;

@@ -1,9 +1,10 @@
 import { useSearchParams } from 'react-router-dom';
-import useFetchMovies from '../../hooks/useFetchMovies';
+import useFetchMoviesWithPagination from '../../hooks/useFetchMoviesWithPagination';
 import Tabs from '../../components/Tabs';
 import SkeletonCard from '../../components/SkeletonCard';
 import { SegmentedControl, ViewMode } from '../../components/SegmentedControl';
 import { MovieList } from '../../components/MovieList';
+import LoadMoreButton from '../../components/LoadMoreButton';
 import './HomePage.scss';
 
 const TABS = [
@@ -26,7 +27,8 @@ const HomePage = () => {
   const viewMode = (searchParams.get('view') as ViewMode) || 'grid';
 
   const endpoint = `/movie/${activeTab}`;
-  const { movies, loading } = useFetchMovies(endpoint);
+  const { movies, loading, loadingMore, hasMore, loadMore } =
+    useFetchMoviesWithPagination(endpoint);
 
   const title = TABS.find((tab) => tab.key === activeTab)?.label || 'Movies';
 
@@ -92,7 +94,18 @@ const HomePage = () => {
           <div className="home-page__no-results">No movies found.</div>
         )}
 
-        {movies.length > 0 && <MovieList movies={movies} viewMode={viewMode} />}
+        {movies.length > 0 && (
+          <>
+            <MovieList movies={movies} viewMode={viewMode} />
+            {hasMore && (
+              <LoadMoreButton
+                onClick={loadMore}
+                loading={loadingMore}
+                disabled={loadingMore}
+              />
+            )}
+          </>
+        )}
       </div>
     </main>
   );

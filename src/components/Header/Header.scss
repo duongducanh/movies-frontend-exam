@@ -1,8 +1,7 @@
 @import '../../styles/variables';
 
 .main-header {
-  background-color: var(--bg-primary);
-  border-bottom: 1px solid var(--border-default);
+  background-color: var(--dark-navy);
   padding: var(--spacing-sm) 0;
   position: sticky;
   top: 0;
@@ -24,7 +23,7 @@
   &__logo {
     font-size: var(--font-size-2xl);
     font-weight: var(--font-weight-bold);
-    color: var(--text-primary);
+    color: var(--white);
     text-decoration: none;
   }
 
