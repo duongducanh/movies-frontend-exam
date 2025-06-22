@@ -8,15 +8,26 @@ interface SearchResultsProps {
   query: string;
   movies: Movie[];
   loading: boolean;
+  onItemClick?: () => void;
 }
 
-const SearchResultItem = ({ movie }: { movie: Movie }) => {
+const SearchResultItem = ({
+  movie,
+  onItemClick,
+}: {
+  movie: Movie;
+  onItemClick?: () => void;
+}) => {
   const posterUrl = movie.poster_path
     ? `https://image.tmdb.org/t/p/w92${movie.poster_path}`
     : placeholder;
 
   return (
-    <Link to={`/movie/${movie.id}`} className="search-result-item">
+    <Link
+      to={`/movie/${movie.id}`}
+      className="search-result-item"
+      onClick={onItemClick}
+    >
       <img
         src={posterUrl}
         alt={movie.title}
@@ -33,7 +44,12 @@ const SearchResultItem = ({ movie }: { movie: Movie }) => {
   );
 };
 
-const SearchResults = ({ query, movies, loading }: SearchResultsProps) => {
+const SearchResults = ({
+  query,
+  movies,
+  loading,
+  onItemClick,
+}: SearchResultsProps) => {
   let content;
 
   if (movies.length > 0) {
@@ -44,7 +60,11 @@ const SearchResults = ({ query, movies, loading }: SearchResultsProps) => {
         }`}
       >
         {movies.map((movie) => (
-          <SearchResultItem key={movie.id} movie={movie} />
+          <SearchResultItem
+            key={movie.id}
+            movie={movie}
+            onItemClick={onItemClick}
+          />
         ))}
       </div>
     );

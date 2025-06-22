@@ -54,6 +54,10 @@ const SearchBar = () => {
     setDebouncedQuery('');
   };
 
+  const handleItemClick = () => {
+    setIsFocused(false);
+  };
+
   const showResults =
     isFocused && debouncedQuery.trim() !== '' && inputValue.trim() !== '';
 
@@ -83,6 +87,7 @@ const SearchBar = () => {
             query={debouncedQuery}
             movies={movies}
             loading={loading}
+            onItemClick={handleItemClick}
           />
         )}
       </div>
