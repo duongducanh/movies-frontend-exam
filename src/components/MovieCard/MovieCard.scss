@@ -6,14 +6,22 @@
   border-radius: var(--radius-md);
   overflow: hidden;
   cursor: pointer;
-  transition: transform var(--transition-fast);
+  transition: all var(--transition-fast);
   text-decoration: none;
   color: inherit;
   background-color: var(--bg-primary);
 
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-md);
+  // Hover effects only on devices that support hover (desktop)
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-md);
+      border-color: #fff;
+    }
+
+    &:hover &__poster-container::after {
+      background-color: rgb(254 240 138 / 0.3);
+    }
   }
 
   &__poster-container {
@@ -40,10 +48,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  &:hover &__poster-container::after {
-    background-color: rgb(254 240 138 / 0.3);
   }
 
   &__info {

@@ -79,13 +79,15 @@ const HomePage = () => {
           />
         </div>
 
-        <h1 className="home-page__title">{title}</h1>
-        <div className="home-page__view-options">
-          <SegmentedControl
-            options={VIEW_OPTIONS}
-            value={viewMode}
-            onChange={handleViewModeChange}
-          />
+        <div className="home-page__header-actions">
+          <h1 className="home-page__title">{title}</h1>
+          <div className="home-page__view-options">
+            <SegmentedControl
+              options={VIEW_OPTIONS}
+              value={viewMode}
+              onChange={handleViewModeChange}
+            />
+          </div>
         </div>
 
         {loading && movies.length === 0 && renderSkeleton()}

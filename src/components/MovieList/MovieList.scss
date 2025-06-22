@@ -11,12 +11,12 @@
     justify-items: center;
 
     @media (max-width: $breakpoint-tablet) {
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
       gap: 1rem;
     }
 
     @media (max-width: $breakpoint-mobile) {
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
       column-gap: 0.5rem;
     }
   }

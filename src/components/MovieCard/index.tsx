@@ -18,7 +18,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
     : '';
 
   return (
-    <Link to={`/movie/${movie.id}`} className="movie-card" tabIndex={0}>
+    <Link to={`/movie/${movie.id}`} className="movie-card">
       <div className="movie-card__poster-container">
         <img
           src={posterUrl}

@@ -15,6 +15,8 @@ A modern React TypeScript application for exploring and searching movies using T
 - 🎪 **Movie Details**: View detailed information for each movie
 - 🔗 **URL State Management**: State preserved in URL parameters
 - 🔔 **Toast Notifications**: Notification system with success, error, info states
+- 📄 **Load More**: Pagination with load more button for seamless browsing
+- 🔝 **Scroll to Top**: Fixed button appears on scroll for easy navigation
 
 ## 🛠️ Tech Stack
 
@@ -97,7 +99,8 @@ src/
 - **Tabs Navigation**: Now Playing / Top Rated
 - **View Toggle**: Grid view / List view
 - **URL State**: State preserved in URL parameters
-- **Infinite Scroll**: Lazy loading on scroll
+- **Load More Pagination**: Fetch additional movies with button click
+- **Smart Loading**: Initial skeleton loading, button loading for subsequent pages
 
 ### Movie Cards
 
@@ -121,6 +124,15 @@ src/
 - **Smooth Animations**: Smooth slide-in/slide-out effects
 - **Accessibility**: Focus management and keyboard navigation
 
+### Load More Functionality
+
+- **Pagination Support**: TMDB API pagination integration
+- **Append Loading**: New movies added to existing list
+- **Loading States**: Separate loading for initial load vs load more
+- **Smart Button**: Automatically hides when no more pages available
+- **Error Handling**: Toast notifications for failed requests
+- **Smooth UX**: No page refresh, seamless content addition
+
 ## 🎨 Styling Architecture
 
 - **SCSS Modules**: Component-scoped styles
@@ -133,6 +145,8 @@ src/
 - **Code Splitting**: Route-based splitting
 - **Optimized Bundles**: Tree shaking and minification
 - **Caching**: HTTP caching for API calls
+- **Efficient Pagination**: Load more instead of infinite scroll for better performance
+- **Smooth Animations**: CSS transitions and transforms for better UX
 
 ## 🧪 Available Scripts
 

@@ -3,6 +3,7 @@ import './App.scss';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import MovieDetailsPage from './pages/MovieDetailsPage'; // We will create this next
+import ScrollToTop from './components/ScrollToTop';
 import { ToastProvider } from './contexts/ToastContext';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             </Routes>
           </main>
         </div>
+        <ScrollToTop />
       </ToastProvider>
     </Router>
   );

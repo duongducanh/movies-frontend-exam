@@ -56,18 +56,18 @@
   // ========================================
 
   // Text Colors
-  --text-primary: var(--black); // Main text - BLACK
-  --text-secondary: var(--gray-600); // Secondary text
+  --text-primary: #ffffff; // Main text - WHITE
+  --text-secondary: var(--gray-300); // Secondary text (lighter for dark bg)
   --text-tertiary: var(--gray-400); // Light text
 
   // Background Colors
-  --bg-primary: var(--white); // Main background
-  --bg-secondary: var(--gray-50); // Light gray background
-  --bg-hover: var(--gray-100); // Hover background
+  --bg-primary: #000000; // Main background - BLACK
+  --bg-secondary: var(--gray-800); // Dark gray background
+  --bg-hover: var(--gray-700); // Hover background (dark)
 
   // Border Colors
-  --border-default: var(--gray-200); // Default borders
-  --border-focus: var(--color-primary); // Focus borders
+  --border-default: var(--gray-600); // Default borders (darker for dark theme)
+  --border-focus: var(--gray-300); // Focus borders
 
   // Brand Colors
   --color-primary: var(--red-900); // Main brand - DARK RED #780000
